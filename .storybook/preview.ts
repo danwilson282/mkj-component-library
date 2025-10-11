@@ -25,4 +25,5 @@ const preview: Preview = {
     }),
   ],
 };
-export default preview;
+module.exports = preview;
+// export default preview;
