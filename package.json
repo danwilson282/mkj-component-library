@@ -61,8 +61,8 @@
     "vitest": "^3.2.4"
   },
   "peerDependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react": "^19",
+    "react-dom": "^19"
   },
   "dependencies": {
     "@storybook/addon-jest": "^9.1.10"
