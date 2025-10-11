@@ -22,8 +22,10 @@
     "test": "jest",
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json",
     "storybook": "npm run test:generate-output && storybook dev -p 6006",
-    "build-storybook": "npm run test:generate-output && storybook build"
+    "build-storybook": "npm run test:generate-output && storybook build",
+    "deploy-storybook": "gh-pages -d storybook-static -b gh-pages -f"
   },
+  "homepage": "https://danwilson282.github.io/mkj-component-library",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -46,6 +48,7 @@
     "@vitest/browser": "^3.2.4",
     "@vitest/coverage-v8": "^3.2.4",
     "autoprefixer": "^10.4.21",
+    "gh-pages": "^6.3.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "path-browserify": "^1.0.1",
