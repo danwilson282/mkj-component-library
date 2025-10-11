@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx", // or "react" for older React versions
-    "module": "commonjs",
+    "module": "ESNext",
     "target": "ES6",
     "esModuleInterop": true,
     "moduleResolution": "node",
