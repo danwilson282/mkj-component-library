@@ -15,8 +15,8 @@
     "build": "rollup -c",
     "test": "jest",
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "npm run test:generate-output && storybook dev -p 6006",
+    "build-storybook": "npm run test:generate-output && storybook build"
   },
   "keywords": [],
   "author": "",
@@ -39,6 +39,7 @@
     "autoprefixer": "^10.4.21",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "path-browserify": "^1.0.1",
     "playwright": "^1.56.0",
     "postcss": "^8.5.6",
     "rollup": "^4.52.4",

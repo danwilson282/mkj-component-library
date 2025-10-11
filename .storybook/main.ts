@@ -15,6 +15,19 @@ const config: StorybookConfig = {
   "framework": {
     "name": "@storybook/react-vite",
     "options": {}
-  }
+  },
+    async viteFinal(config) {
+    config.resolve = {
+      ...config.resolve,
+      alias: {
+        ...config.resolve?.alias,
+        // force Vite to use CommonJS version of upath
+        // upath: 'upath/index.cjs',
+        // optional: polyfill 'path' if used by upath
+        path: require.resolve('path-browserify'),
+      },
+    };
+    return config;
+  },
 };
 export default config;
