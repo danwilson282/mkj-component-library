@@ -14,6 +14,7 @@
   "scripts": {
     "build": "rollup -c",
     "test": "jest",
+    "test:generate-output": "jest --json --outputFile=.jest-test-results.json",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -52,5 +53,8 @@
   "peerDependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
+  },
+  "dependencies": {
+    "@storybook/addon-jest": "^9.1.10"
   }
 }

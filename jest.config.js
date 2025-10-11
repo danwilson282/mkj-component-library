@@ -5,4 +5,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'], // optional setup file
+  modulePathIgnorePatterns: ['node_modules', 'jest-test-results.json'],
 };
