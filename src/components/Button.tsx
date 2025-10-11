@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface ButtonProps {
+export type ButtonProps = {
   label: string;
   onClick?: () => void;
 }
