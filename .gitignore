@@ -40,6 +40,7 @@ jest-output/
 out/
 storybook-static/
 stories/
+.jest-test-results.json
 
 # Dependency directories
 .bower_components/

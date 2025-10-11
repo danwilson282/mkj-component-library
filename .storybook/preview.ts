@@ -1,5 +1,7 @@
 import type { Preview } from '@storybook/react-vite'
 import '../src/styles/globals.css'
+import { withTests } from '@storybook/addon-jest';
+import results from '../.jest-test-results.json' with { type: 'json' };; 
 const preview: Preview = {
   parameters: {
     controls: {
@@ -16,6 +18,11 @@ const preview: Preview = {
       test: 'todo'
     }
   },
+  decorators: [
+    withTests({
+      results: results,
+      filesExt: '.test.tsx',
+    }),
+  ],
 };
-
 export default preview;
