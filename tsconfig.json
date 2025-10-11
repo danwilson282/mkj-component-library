@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx", // or "react" for older React versions
-    "module": "commonjs",
+    "module": "ESNext",
     "target": "ES6",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["jest", "@testing-library/jest-dom"]
+    "types": ["jest", "@testing-library/jest-dom"],
+    "declaration": true,
+    "declarationDir": "dist",
+    "outDir": "dist",
   },
   "include": ["src", "jest.setup.ts"]
 }
+

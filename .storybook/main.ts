@@ -30,4 +30,5 @@ const config: StorybookConfig = {
     return config;
   },
 };
+// module.exports = config;
 export default config;
