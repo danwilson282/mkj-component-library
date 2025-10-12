@@ -23,7 +23,7 @@
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json",
     "storybook": "npm run test:generate-output && storybook dev -p 6006",
     "build-storybook": "npm run test:generate-output && storybook build",
-    "deploy-storybook": "gh-pages -d storybook-static -b gh-pages -f"
+    "deploy-storybook": "gh-pages -d storybook-static -b gh-pages"
   },
   "homepage": "https://danwilson282.github.io/mkj-component-library",
   "keywords": [],
