@@ -1,6 +1,6 @@
 {
   "name": "@danwilson282/mkj-component-library",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -33,6 +33,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.1",
     "@heroui/react": "^2.8.5",
+    "@portabletext/react": "^4.0.3",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.2",
@@ -71,7 +72,11 @@
   },
   "peerDependencies": {
     "react": "^19",
-    "react-dom": "^19"
+    "react-dom": "^19",
+    "@heroui/react": "^2.8.5",
+    "@portabletext/react": "^4.0.3",
+    "react-icons": "^5.5.0",
+    "tailwindcss": "*"
   },
   "dependencies": {
     "@storybook/addon-jest": "^9.1.10"
