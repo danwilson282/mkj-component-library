@@ -46,10 +46,10 @@ const components: PortableTextComponents = {
   },
 };
 
-interface PortableTextWithIconsProps {
+export type TextBlockProps = {
   value: PortableTextBlock[];
 }
 
-export const TextBlock: React.FC<PortableTextWithIconsProps> = ({ value }) => {
+export const TextBlock: React.FC<TextBlockProps> = ({ value }) => {
   return <PortableText value={value} components={components} />;
 };

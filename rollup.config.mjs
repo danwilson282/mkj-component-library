@@ -17,7 +17,10 @@ export default {
     commonjs(),
     typescript({ 
       tsconfig: './tsconfig.json',
-      useTsconfigDeclarationDir: true 
+      useTsconfigDeclarationDir: true ,
+      tsconfigOverride: {
+        exclude: ["**/*.stories.tsx"],
+      },
     })
   ],
 };
