@@ -11,6 +11,7 @@ const config: StorybookConfig = {
     "@storybook/addon-a11y",
     "@storybook/addon-vitest",
     "@storybook/addon-jest",
+    "@storybook/addon-essentials",
   ],
   "framework": {
     "name": "@storybook/react-vite",
