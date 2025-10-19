@@ -11,3 +11,8 @@ type Story = StoryObj<typeof Button>;
 export const Primary: Story = {
   args: { label: "Click me" },
 };
+
+export const Secondary: Story = {
+  ...Primary,
+  args: { label: "Click mne" },
+};
