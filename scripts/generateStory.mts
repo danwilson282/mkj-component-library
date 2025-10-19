@@ -3,7 +3,7 @@ import { parse } from "react-docgen-typescript";
 import fs from "fs";
 import path from "path";
 
-const componentName = "Button"
+const componentName = "HeroBanner"
 // Set paths
 const componentPath = path.resolve(`./src/components/${componentName}/${componentName}.tsx`);
 const outputPath = path.resolve(`./src/components/${componentName}/${componentName}.stories.tsx`);
@@ -51,7 +51,7 @@ Object.entries(props).forEach(([propName, prop]) => {
     baseArgs[propName] = false;
   } else if (typeName === 'string') {
     argTypes[propName] = { control: 'text' };
-    baseArgs[propName] = propName === 'label' ? 'Click me' : '';
+    baseArgs[propName] = propName === 'label' ? 'Click me' : 'Lorem Ipsum';
   } else {
     console.warn(`⚠️ Skipping unhandled or complex prop: ${propName}: ${typeName}`);
   }

@@ -1,7 +1,7 @@
-import Masthead from "./Masthead";
+import {Masthead} from "./Masthead";
 import type { Meta, StoryObj } from "@storybook/react";
 const meta: Meta<typeof Masthead > = {
-  title: "Example/Masthead",
+  title: "Example/Masthead2",
   component: Masthead ,
 };
 

@@ -1,8 +1,12 @@
 import { Button, Input, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar } from "@heroui/react";
 
 import { useState } from "react";
+export type MastheadProps = {
+  
+}
 
-export default function Masthead() {
+export const Masthead: React.FC<MastheadProps> = ({}) => {
+// export default function Masthead() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
