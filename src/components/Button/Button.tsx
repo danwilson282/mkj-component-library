@@ -9,12 +9,13 @@ export type ButtonProps = {
   size?: "sm" | "md" | "lg"
 }
 
-export const Button: React.FC<ButtonProps> = ({ label, colour, variant, isLoading, onClick }) => (
+export const Button: React.FC<ButtonProps> = ({ label, colour, variant, isLoading, onClick, size }) => (
   <HeroButton
     color={colour}
     onPress={onClick}
     variant={variant}
     isLoading={isLoading}
+    size={size}
   >
     {label}
   </HeroButton>
