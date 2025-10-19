@@ -3,7 +3,7 @@ import { parse } from "react-docgen-typescript";
 import fs from "fs";
 import path from "path";
 
-const componentName = "HeroBanner"
+const componentName = "NestedNav"
 // Set paths
 const componentPath = path.resolve(`./src/components/${componentName}/${componentName}.tsx`);
 const outputPath = path.resolve(`./src/components/${componentName}/${componentName}.stories.tsx`);
