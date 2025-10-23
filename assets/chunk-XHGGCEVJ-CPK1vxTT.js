@@ -1,0 +1,1 @@
+import{d as e}from"./iframe-D8dPSlhY.js";var[r,o]=e({name:"CardContext",strict:!0,errorMessage:"useCardContext: `context` is undefined. Seems you forgot to wrap component within <Card />"});export{r as C,o as u};

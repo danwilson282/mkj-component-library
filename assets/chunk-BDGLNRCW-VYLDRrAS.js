@@ -1,0 +1,1 @@
+import{r as t}from"./iframe-D8dPSlhY.js";function u(e){return{UNSAFE_getDOMNode(){return e.current}}}function o(e){const r=t.useRef(null);return t.useImperativeHandle(e,()=>r.current),r}export{u as c,o as u};

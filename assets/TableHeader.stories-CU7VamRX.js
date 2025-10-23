@@ -1,0 +1,3 @@
+import{R as u}from"./iframe-D8dPSlhY.js";import"./preload-helper-PPVm8Dsz.js";function t(l){return null}t.getCollectionNode=function*(n,s){let{children:o,columns:a}=n;if(s.columns=[],typeof o=="function"){if(!a)throw new Error("props.children was a function but props.columns is missing");for(let e of a)yield{type:"column",value:e,renderer:o}}else{let e=[];u.Children.forEach(o,c=>{e.push({type:"column",element:c})}),yield*e}};let i=t;var d=i,m=d;const b={title:"HeroUI/TableHeader",component:m},r={args:{}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  args: {}
+}`,...r.parameters?.docs?.source}}};const h=["Default"];export{r as Default,h as __namedExportsOrder,b as default};

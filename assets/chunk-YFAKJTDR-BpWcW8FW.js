@@ -1,0 +1,1 @@
+import{r as d}from"./iframe-D8dPSlhY.js";function o(r){return d.forwardRef(r)}var m=(r,t,i=!0)=>{if(!t)return[r,{}];const n=t.reduce((f,e)=>e in r?{...f,[e]:r[e]}:f,{});return i?[Object.keys(r).filter(e=>!t.includes(e)).reduce((e,u)=>({...e,[u]:r[u]}),{}),n]:[r,n]};export{o as f,m};

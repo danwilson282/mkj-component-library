@@ -1,0 +1,1 @@
+import{t as u}from"./chunk-UFVD3L5A-Dec1Obts.js";import{T as s}from"./index-_deBX9W8.js";var m=(o,e)=>{var r,t,l;return s(o,{...e,twMerge:(r=e?.twMerge)!=null?r:!0,twMergeConfig:{...e?.twMergeConfig,theme:{...(t=e?.twMergeConfig)==null?void 0:t.theme,...u.theme},classGroups:{...(l=e?.twMergeConfig)==null?void 0:l.classGroups,...u.classGroups}}})};export{m as t};

@@ -1,0 +1,1 @@
+import{d as t}from"./useFocusVisible-C8HhheBG.js";import{a as r,$ as o}from"./utils-U1MD0fLI.js";import{i as $}from"./iframe-D8dPSlhY.js";import{$ as d}from"./runAfterTransition-BqV_gka4.js";function m(e){const f=r(e),c=o(f);if(t()==="virtual"){let a=c;d(()=>{o(f)===a&&e.isConnected&&$(e)})}else $(e)}export{m as $};

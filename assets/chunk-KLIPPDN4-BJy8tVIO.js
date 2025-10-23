@@ -1,0 +1,1 @@
+import{f as p}from"./chunk-YFAKJTDR-_llI_GAI.js";import{u as f}from"./chunk-BDGLNRCW-VYLDRrAS.js";import{j as m}from"./iframe-D8dPSlhY.js";var r=p((o,a)=>{const{as:e,activePage:s,...t}=o,n=e||"span",i=f(a);return m.jsx(n,{ref:i,"aria-hidden":!0,...t,children:s})});r.displayName="HeroUI.PaginationCursor";var g=r;export{g as p};

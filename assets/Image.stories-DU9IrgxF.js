@@ -1,0 +1,3 @@
+import{i as t}from"./chunk-BHGNW4BO-BRJuPeyg.js";import"./iframe-D8dPSlhY.js";import"./preload-helper-PPVm8Dsz.js";import"./chunk-YFAKJTDR-_llI_GAI.js";import"./chunk-TX3FPB7D-IHzdR_VM.js";import"./chunk-UFVD3L5A-Dec1Obts.js";import"./index-_deBX9W8.js";import"./chunk-BDGLNRCW-VYLDRrAS.js";import"./index-9NAC_5dS.js";import"./index-ff2kdsIU.js";import"./index-Ca3nUzO9.js";const l={title:"HeroUI/Image",component:t},r={args:{}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  args: {}
+}`,...r.parameters?.docs?.source}}};const f=["Default"];export{r as Default,f as __namedExportsOrder,l as default};

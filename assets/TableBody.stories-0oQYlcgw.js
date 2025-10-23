@@ -1,0 +1,3 @@
+import{R as d}from"./iframe-D8dPSlhY.js";import"./preload-helper-PPVm8Dsz.js";function s(i){return null}s.getCollectionNode=function*(r){let{children:o,items:a}=r;yield{type:"body",hasChildNodes:!0,props:r,*childNodes(){if(typeof o=="function"){if(!a)throw new Error("props.children was a function but props.items is missing");for(let e of a)yield{type:"item",value:e,renderer:o}}else{let e=[];d.Children.forEach(o,l=>{e.push({type:"item",element:l})}),yield*e}}}};let n=s;var c=n,p=c;const u={title:"HeroUI/TableBody",component:p},t={args:{}};t.parameters={...t.parameters,docs:{...t.parameters?.docs,source:{originalSource:`{
+  args: {}
+}`,...t.parameters?.docs?.source}}};const b=["Default"];export{t as Default,b as __namedExportsOrder,u as default};

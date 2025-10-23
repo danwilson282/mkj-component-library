@@ -1,0 +1,1 @@
+import{d as e}from"./iframe-D8dPSlhY.js";var[r,o]=e({name:"CalendarContext",strict:!0,errorMessage:"useContext: `context` is undefined. Seems you forgot to wrap component within the CalendarProvider"});export{r as C,o as u};

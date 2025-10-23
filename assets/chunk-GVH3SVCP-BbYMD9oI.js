@@ -1,0 +1,1 @@
+import{a as e}from"./chunk-ICU6NNET-C25JlTbB.js";import{r as l,u as s,j as v}from"./iframe-D8dPSlhY.js";var d=l.forwardRef(function(o,i){var a,r;const t=s(),n=(r=(a=o.validationBehavior)!=null?a:t?.validationBehavior)!=null?r:"native";return v.jsx(e,{...o,ref:i,validationBehavior:n})});export{d as F};

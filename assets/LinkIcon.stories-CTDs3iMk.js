@@ -1,0 +1,3 @@
+import{j as e}from"./iframe-D8dPSlhY.js";import"./preload-helper-PPVm8Dsz.js";var t=()=>e.jsxs("svg",{"aria-hidden":"true",className:"flex mx-1 text-current self-center",fill:"none",height:"1em",shapeRendering:"geometricPrecision",stroke:"currentColor",strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",viewBox:"0 0 24 24",width:"1em",children:[e.jsx("path",{d:"M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"}),e.jsx("path",{d:"M15 3h6v6"}),e.jsx("path",{d:"M10 14L21 3"})]});const a={title:"HeroUI/LinkIcon",component:t},r={args:{}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  args: {}
+}`,...r.parameters?.docs?.source}}};const n=["Default"];export{r as Default,n as __namedExportsOrder,a as default};

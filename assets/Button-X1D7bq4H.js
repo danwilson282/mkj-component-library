@@ -1,0 +1,1 @@
+import{j as i}from"./iframe-D8dPSlhY.js";import{b as p}from"./chunk-WBUKVQRU-B2gShAae.js";const f=({label:o,colour:s,variant:r,isLoading:m,onClick:u,size:n,type:b,children:t,className:e})=>i.jsx(p,{className:e,color:s,onPress:u,variant:r,isLoading:m,size:n,type:b==="submit"?"submit":"button",children:t||o});export{f as B};

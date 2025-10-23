@@ -1,0 +1,1 @@
+import{r as n}from"./iframe-D8dPSlhY.js";import{$ as l}from"./useControlledState-D8eDkNBN.js";function f(t){let[a,e]=l(t.isOpen,t.defaultOpen||!1,t.onOpenChange);const o=n.useCallback(()=>{e(!0)},[e]),s=n.useCallback(()=>{e(!1)},[e]),c=n.useCallback(()=>{e(!a)},[e,a]);return{isOpen:a,setOpen:e,open:o,close:s,toggle:c}}export{f as $};

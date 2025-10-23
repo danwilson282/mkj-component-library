@@ -1,0 +1,1 @@
+import{u as s}from"./chunk-BV7BCS3N-CqwntwIy.js";import{p as g}from"./chunk-6FXDB7ZT-Bn8jXI3K.js";import{j as i}from"./iframe-D8dPSlhY.js";var r=o=>{const{getMenuTriggerProps:e}=s(),{children:t,...p}=o;return i.jsx(g,{...e(p),children:t})};r.displayName="HeroUI.DropdownTrigger";var m=r;export{m as d};

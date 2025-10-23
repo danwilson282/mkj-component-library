@@ -1,0 +1,3 @@
+import{s as o}from"./chunk-4EXC76WE-BP1iGKrh.js";import"./chunk-YFAKJTDR-_llI_GAI.js";import"./iframe-D8dPSlhY.js";import"./preload-helper-PPVm8Dsz.js";import"./chunk-NY7ORCUI-CwdcuKeP.js";import"./chunk-TX3FPB7D-IHzdR_VM.js";import"./chunk-UFVD3L5A-Dec1Obts.js";import"./index-_deBX9W8.js";import"./chunk-BDGLNRCW-VYLDRrAS.js";import"./index-9NAC_5dS.js";const n={title:"HeroUI/ScrollShadow",component:o},r={args:{}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  args: {}
+}`,...r.parameters?.docs?.source}}};const u=["Default"];export{r as Default,u as __namedExportsOrder,n as default};

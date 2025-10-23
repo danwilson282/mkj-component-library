@@ -1,0 +1,1 @@
+import{g}from"./index-9NAC_5dS.js";import{r}from"./iframe-D8dPSlhY.js";function m(a={}){const[n,o]=r.useState([]),c=r.useCallback(t=>{const s=t.target,e=Math.max(s.clientWidth,s.clientHeight);o(i=>[...i,{key:g(i.length.toString()),size:e,x:t.x-e/2,y:t.y-e/2}])},[]),l=r.useCallback(t=>{o(s=>s.filter(e=>e.key!==t))},[]);return{ripples:n,onClear:l,onPress:c,...a}}export{m as u};
