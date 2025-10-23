@@ -1,13 +1,14 @@
 {
   "name": "@danwilson282/mkj-component-library",
-  "version": "0.1.6",
+  "version": "0.1.13",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
       "types": "./dist/index.d.ts"
     }
   },
@@ -29,7 +30,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.1",
     "@heroui/react": "^2.8.5",
