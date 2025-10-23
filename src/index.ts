@@ -12,3 +12,6 @@ export type { NestedNavProps } from  "./components/NestedNav/NestedNav"
 
 export { TextBlock } from "./components/TextBlock/TextBlock"
 export type { TextBlockProps } from  "./components/TextBlock/TextBlock"
+
+export { LoginButton } from "./components/LoginButton/LoginButton"
+export type { LoginButtonProps } from  "./components/LoginButton/LoginButton"
