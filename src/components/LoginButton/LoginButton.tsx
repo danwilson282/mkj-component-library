@@ -5,7 +5,6 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Button,
   useDisclosure,
   Divider,
   Form,
@@ -13,6 +12,7 @@ import {
   User,
   Link,
 } from "@heroui/react";
+import { Button } from "../Button/Button";
 import { useState,  Dispatch, SetStateAction, FormEvent } from "react";
 import { FaGoogle, FaMagic, FaLock } from "react-icons/fa";
 type User = {
@@ -84,13 +84,13 @@ export const LoginButton:React.FC<LoginButtonProps> = ({user, useCredentials, us
             }}
             name={user.name}
             />
-            <Button onPress={signOut.handleSignOut} variant="bordered" color="primary">{signOut.label}</Button>
+            <Button onClick={signOut.handleSignOut} variant="bordered" colour="primary">{signOut.label}</Button>
         </div>
     )
   }
   return (
     <>
-      <Button onPress={onOpen} color="primary">Login</Button>
+      <Button onClick={onOpen} colour="primary">Login</Button>
       <Modal
         isDismissable={false}
         isKeyboardDismissDisabled={true}
@@ -118,7 +118,7 @@ export const LoginButton:React.FC<LoginButtonProps> = ({user, useCredentials, us
                             value={useEmail.email}
                             onChange={e => useEmail.setEmail(e.target.value)}
                         />
-                        <Button className="w-full" type="submit" color="primary">
+                        <Button className="w-full" type="submit" colour="primary">
                             <FaMagic/>
                             {useEmail.label}
                         </Button>
@@ -152,7 +152,7 @@ export const LoginButton:React.FC<LoginButtonProps> = ({user, useCredentials, us
                             value={useCredentials.password}
                             onChange={e => useCredentials.setPassword(e.target.value)}
                         />
-                        <Button className="w-full" type="submit" color="primary">
+                        <Button className="w-full" type="submit" colour="primary">
                             <FaLock />
                             {useCredentials.label}
                         </Button>
@@ -164,7 +164,7 @@ export const LoginButton:React.FC<LoginButtonProps> = ({user, useCredentials, us
                     <>
                     <Form className="w-full" onSubmit={useGoogle.handleGoogleSubmit}>
                         <div className="font-semibold text-small uppercase">{useGoogle.title}</div>
-                        <Button className="w-full" type="submit" color="primary">
+                        <Button className="w-full" type="submit" colour="primary">
                             <FaGoogle />
                             {useGoogle.label}
                         </Button>
