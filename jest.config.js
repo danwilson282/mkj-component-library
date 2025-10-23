@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   testEnvironment: 'jsdom', // needed for React components
   transform: {
     '^.+\\.tsx?$': 'ts-jest', // use ts-jest for TS files
