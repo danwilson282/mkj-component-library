@@ -2,67 +2,52 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { LoginButton } from "./LoginButton";
 
-jest.mock("@heroui/react", () => ({
-  Button: (props: any) => <button {...props}>{props.children}</button>,
-  Modal: (props: any) => <div>{props.children}</div>,
-  ModalContent: (props: any) => <div>{props.children}</div>,
-  ModalHeader: (props: any) => <div>{props.children}</div>,
-  ModalBody: (props: any) => <div>{props.children}</div>,
-  ModalFooter: (props: any) => <div>{props.children}</div>,
-  Divider: () => <hr />,
-  Form: (props: any) => <form {...props}>{props.children}</form>,
-  Input: (props: any) => (
-    <input
-      aria-label={props.label}
-      value={props.value}
-      onChange={props.onChange}
-      placeholder={props.placeholder}
-    />
-  ),
-  User: (props: any) => <div>{props.name}</div>,
-  Link: (props: any) => <a href={props.href}>{props.children}</a>,
-  useDisclosure: () => ({
-    isOpen: true,
-    onOpen: jest.fn(),
-    onOpenChange: jest.fn(),
-  }),
-}));
+jest.mock("@heroui/react");
+
+const defaultRegisterPage = { url: "/register", label: "Register" };
 
 describe("LoginButton Component", () => {
-  test("covers user, modal, email, credentials, and google login flows", async () => {
-    // ---- 1️⃣ Mock sign-out (user logged in case)
+  // 1️⃣ — Logged-in state
+  test("renders user info and calls sign-out handler", () => {
     const mockSignOut = jest.fn().mockResolvedValue(undefined);
 
-    const { rerender } = render(
+    render(
       <LoginButton
         user={{ name: "Jane Doe", image: "/avatar.png" }}
         signOut={{ label: "Sign out", handleSignOut: mockSignOut }}
-        registerPage={{ url: "/register", label: "Register" }}
+        registerPage={defaultRegisterPage}
       />
     );
 
-    // User info and sign-out should render
     expect(screen.getByText("Jane Doe")).toBeInTheDocument();
+
     const signOutButton = screen.getByRole("button", { name: /sign out/i });
     fireEvent.click(signOutButton);
-    expect(mockSignOut).toHaveBeenCalled();
 
-    // ---- 2️⃣ Modal opens on Login button click (rerender without user)
-    rerender(
+    expect(mockSignOut).toHaveBeenCalledTimes(1);
+  });
+
+  // 2️⃣ — Modal open/close flow
+  test("renders Login button and opens modal", async () => {
+    render(
       <LoginButton
         signOut={{ label: "Sign out", handleSignOut: jest.fn() }}
-        registerPage={{ url: "/register", label: "Register" }}
+        registerPage={defaultRegisterPage}
       />
     );
 
     const loginButton = screen.getByRole("button", { name: /login/i });
     fireEvent.click(loginButton);
-    expect(await screen.findByText(/choose your sign in method/i)).toBeInTheDocument();
 
-    // ---- 3️⃣ Email magic link flow
+    expect(await screen.findByText(/choose your sign in method/i)).toBeInTheDocument();
+  });
+
+  // 3️⃣ — Email magic link flow
+  test("handles email login submission and shows confirmation message", async () => {
     const handleEmailSubmit = jest.fn().mockResolvedValue(undefined);
     const setEmail = jest.fn();
-    rerender(
+
+    render(
       <LoginButton
         useEmail={{
           title: "Email Login",
@@ -72,44 +57,52 @@ describe("LoginButton Component", () => {
           handleEmailSubmit,
         }}
         signOut={{ label: "Sign out", handleSignOut: jest.fn() }}
-        registerPage={{ url: "/register", label: "Register" }}
+        registerPage={defaultRegisterPage}
       />
     );
 
     fireEvent.click(screen.getByRole("button", { name: /login/i }));
+
     const emailInput = screen.getByLabelText(/email/i);
     fireEvent.submit(emailInput.closest("form")!);
-    expect(handleEmailSubmit).toHaveBeenCalled();
-    expect(await screen.findByText(/check your email/i)).toBeInTheDocument();
 
-    // ---- 4️⃣ Credentials login flow
+    expect(handleEmailSubmit).toHaveBeenCalledTimes(1);
+    expect(await screen.findByText(/check your email/i)).toBeInTheDocument();
+  });
+
+  // 4️⃣ — Credentials login
+  test("handles credentials login submission", () => {
     const handleCredentialsSubmit = jest.fn().mockResolvedValue(undefined);
-    const setCredEmail = jest.fn();
+    const setEmail = jest.fn();
     const setPassword = jest.fn();
 
-    rerender(
+    render(
       <LoginButton
         useCredentials={{
-          title: "Login with Credentials",
+          title: "Credentials Login",
           label: "Sign In",
           email: "user@example.com",
-          setEmail: setCredEmail,
+          setEmail,
           password: "secret",
           setPassword,
           handleCredentialsSubmit,
         }}
         signOut={{ label: "Sign out", handleSignOut: jest.fn() }}
-        registerPage={{ url: "/register", label: "Register" }}
+        registerPage={defaultRegisterPage}
       />
     );
 
     fireEvent.click(screen.getByRole("button", { name: /login/i }));
     fireEvent.submit(screen.getByRole("button", { name: /sign in/i }).closest("form")!);
-    expect(handleCredentialsSubmit).toHaveBeenCalled();
 
-    // ---- 5️⃣ Google login flow
+    expect(handleCredentialsSubmit).toHaveBeenCalledTimes(1);
+  });
+
+  // 5️⃣ — Google login
+  test("renders and triggers Google login", () => {
     const handleGoogleSubmit = jest.fn().mockResolvedValue(undefined);
-    rerender(
+
+    render(
       <LoginButton
         useGoogle={{
           title: "Google Sign In",
@@ -117,12 +110,13 @@ describe("LoginButton Component", () => {
           handleGoogleSubmit,
         }}
         signOut={{ label: "Sign out", handleSignOut: jest.fn() }}
-        registerPage={{ url: "/register", label: "Register" }}
+        registerPage={defaultRegisterPage}
       />
     );
 
     fireEvent.click(screen.getByRole("button", { name: /login/i }));
     fireEvent.submit(screen.getByRole("button", { name: /continue with google/i }).closest("form")!);
-    expect(handleGoogleSubmit).toHaveBeenCalled();
+
+    expect(handleGoogleSubmit).toHaveBeenCalledTimes(1);
   });
 });
