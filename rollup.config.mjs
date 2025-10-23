@@ -1,26 +1,38 @@
 import typescript from "rollup-plugin-typescript2";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import pkg from "./package.json" with { type: 'json' };;
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import pkg from "./package.json" assert { type: "json" };
 
 export default {
   input: "src/index.ts",
   output: [
-    { file: pkg.main, format: "cjs", sourcemap: true },
-    { file: pkg.module, format: "esm", sourcemap: true },
+    {
+      file: pkg.main,        // CommonJS
+      format: "cjs",
+      sourcemap: true,
+      exports: "named",      // ensures named exports work
+    },
+    {
+      file: pkg.module,      // ES Module
+      format: "esm",
+      sourcemap: true,
+    },
   ],
-  external: ['react', 'react-dom'],
+  external: ["react", "react-dom"],
   plugins: [
     peerDepsExternal(),
     resolve(),
-    commonjs(),
-    typescript({ 
-      tsconfig: './tsconfig.json',
-      useTsconfigDeclarationDir: true ,
+    commonjs({
+      include: /node_modules/,
+      requireReturnsDefault: "auto", // helps with CJS interop
+    }),
+    typescript({
+      tsconfig: "./tsconfig.json",
+      useTsconfigDeclarationDir: true,
       tsconfigOverride: {
         exclude: ["**/*.stories.tsx"],
       },
-    })
+    }),
   ],
 };
