@@ -48,3 +48,30 @@ export const Default: Story = {
   ]
   },
 };
+
+export const Locked: Story = {
+  args: {
+    ...Default.args, // ✅ merge the default props
+  navItems: [
+    { id: "1", label: 'Home', link: '#home', locked: true },
+    {
+      id: "2",
+      label: 'Products',
+      locked: true,
+      children: [
+        { id: "21", label: 'Electronics', link: '#electronics' },
+        { id: "22", label: 'Clothing', link: '#clothing' },
+        {
+          id: "23",
+          label: 'Home & Garden',
+          children: [
+            { id: "231", label: 'Furniture', link: '#furniture' },
+            { id: "232", label: 'Decor', link: '#decor' },
+            { id: "233", label: 'Garden Tools', link: '#garden' }
+          ]
+        }
+      ]
+    },
+  ]
+  },
+};

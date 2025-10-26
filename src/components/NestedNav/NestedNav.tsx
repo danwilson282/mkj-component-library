@@ -1,6 +1,5 @@
 import { JSX, useState } from 'react';
-import { FaRectangleXmark, FaBars, FaAngleDown, FaAngleRight  } from "react-icons/fa6";
-
+import { FaRectangleXmark, FaBars, FaAngleDown, FaAngleRight, FaLock  } from "react-icons/fa6";
 export type NestedNavProps = {
     menuTitle: string;
     navItems: NavItem[]
@@ -9,6 +8,7 @@ export type NestedNavProps = {
 type NavItem = {
   id: string;
   label: string;
+  locked?: boolean;
   link?: string;
   children?: NavItem[];
 }
@@ -35,12 +35,19 @@ export const NestedNav:React.FC<NestedNavProps> = ({menuTitle, navItems}) => {
     return (
       <div key={item.id} className="w-full">
         <div
-          className={`flex items-center justify-between px-4 py-3 hover:bg-gray-100 cursor-pointer transition-colors ${
+          className={`flex items-center justify-between px-4 py-3 ${!item.locked && 'hover:bg-gray-100 cursor-pointer'} transition-colors ${
             level > 0 ? 'pl-' + (4 + level * 4) : ''
           }`}
-          onClick={() => hasChildren ? toggleExpanded(item.id) : setIsOpen(false)}
+          onClick={() => (hasChildren && !item.locked) ? toggleExpanded(item.id) : setIsOpen(false)}
           style={{ paddingLeft: `${1 + level * 1}rem` }}
         >
+          {item.locked ? (
+          <span
+            className="flex-1 text-gray-500 transition-colors"
+          >
+            {item.label} <FaLock className="inline ml-2 text-gray-500" />
+          </span>
+          ) : (
           <a
             href={item.link || '#'}
             className="flex-1 text-gray-800 hover:text-blue-600 transition-colors"
@@ -48,7 +55,9 @@ export const NestedNav:React.FC<NestedNavProps> = ({menuTitle, navItems}) => {
           >
             {item.label}
           </a>
-          {hasChildren && (
+          )}
+
+          {hasChildren && !item.locked && (
             <span className="text-gray-500">
               {isExpanded ? <FaAngleDown size={20} /> : <FaAngleRight size={20} />}
             </span>
