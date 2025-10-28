@@ -1,36 +1,22 @@
 import React from "react";
-import { PortableText, PortableTextComponents, PortableTextMarkComponentProps } from "@portabletext/react";
-import type { PortableTextBlock, PortableTextMarkDefinition } from '@portabletext/types';
+import {
+  PortableText,
+  PortableTextComponents,
+  PortableTextMarkComponentProps,
+} from "@portabletext/react";
+import type { PortableTextBlock, PortableTextMarkDefinition } from "@portabletext/types";
 import * as MdIcons from "react-icons/md";
 import * as FaIcons from "react-icons/fa";
 import * as FiIcons from "react-icons/fi";
-import { link } from "@heroui/react";
 
-export type ResolveInternalLink = (ref: string) => string;
-
+// ====== ICON ANNOTATION ======
 interface IconAnnotation extends PortableTextMarkDefinition {
   _type: "icon";
   iconLibrary: "md" | "fa" | "fi";
   iconName: string;
 }
 
-const iconLibraries = {
-  md: MdIcons,
-  fa: FaIcons,
-  fi: FiIcons,
-};
-
-interface SanityLink extends PortableTextMarkDefinition {
-  _type: 'link';
-    linkType: 'internal' | 'external';
-    internalLink?: {
-      _ref: string;
-      _type: 'reference';
-    }; // _ref to page or post
-    externalUrl?: string;
-    label?: string;
-    openInNewTab?: boolean;
-}
+const iconLibraries = { md: MdIcons, fa: FaIcons, fi: FiIcons };
 
 const IconMarkComponent: React.FC<
   PortableTextMarkComponentProps<IconAnnotation>
@@ -41,69 +27,89 @@ const IconMarkComponent: React.FC<
   const IconSet = iconLibraries[iconLibrary];
   if (!IconSet) return <>{children}</>;
 
-  const IconComponent = IconSet[iconName as keyof typeof IconSet] as React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  const IconComponent = IconSet[
+    iconName as keyof typeof IconSet
+  ] as React.ComponentType<React.SVGProps<SVGSVGElement>>;
+
   if (!IconComponent) return <>{children}</>;
 
   return (
-    <>
-        <span style={{ display: "inline-flex", alignItems: "center" }}>
-            <IconComponent style={{ marginRight: 4, verticalAlign: "middle" }} />
-        </span>
-    {children}
-    </>
-
+    <span style={{ display: "inline-flex", alignItems: "center" }}>
+      <IconComponent style={{ marginRight: 4, verticalAlign: "middle" }} />
+      {children}
+    </span>
   );
 };
-export function resolveSanityLink(link: SanityLink): string {
-  if (link.linkType === 'external' && link.externalUrl) {
-    return link.externalUrl;
-  }
 
-  if (link.linkType === 'internal' && link.internalLink?._ref) {
-    // Map the _ref to your frontend route. Example for Next.js:
-    return `/${link.internalLink._ref}`;
-    // For production, you can fetch the slug using GROQ or keep a slug map
-  }
-
-  return '#';
+// ====== LINK ANNOTATION ======
+interface SanityLink extends PortableTextMarkDefinition {
+  _type: "link";
+  linkType: "internal" | "external";
+  internalLink?: { _ref: string; _type: "reference" };
+  externalUrl?: string;
+  openInNewTab?: boolean;
 }
+
+export type ResolveInternalLink =
+  | ((ref: string) => string)
+  | ((ref: string) => Promise<string>);
 
 const LinkMarkComponent = (
   resolveInternalLink?: ResolveInternalLink
 ): React.FC<PortableTextMarkComponentProps<SanityLink>> =>
   ({ children, value }) => {
-    if (!value) return <>{children}</>;
+    const [href, setHref] = React.useState("#");
 
-    let href = '#';
+    React.useEffect(() => {
+      if (!value) return;
 
-    if (value.linkType === 'external' && value.externalUrl) {
-      href = value.externalUrl;
-    } else if (value.linkType === 'internal' && value.internalLink?._ref) {
-      href = resolveInternalLink
-        ? resolveInternalLink(value.internalLink._ref)
-        : `/${value.internalLink._ref}`; // Fallback
-    }
+      // External
+      if (value.linkType === "external" && value.externalUrl) {
+        setHref(value.externalUrl);
+        return;
+      }
 
-    const target = value.openInNewTab ? '_blank' : '_self';
+      // Internal
+      if (value.linkType === "internal" && value.internalLink?._ref) {
+        const maybePromise = resolveInternalLink?.(value.internalLink._ref);
+
+        if (maybePromise instanceof Promise) {
+          maybePromise.then((url) => setHref(url || "/"));
+        } else if (typeof maybePromise === "string") {
+          setHref(maybePromise);
+        }
+      }
+    }, [value]);
+
+    const target = value?.openInNewTab ? "_blank" : "_self";
 
     return (
-      <a href={href} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined}>
+      <a
+        href={href}
+        target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : undefined}
+      >
         {children}
       </a>
     );
   };
 
-export type TextBlockProps = {
+// ====== PORTABLE TEXT WRAPPER ======
+interface TextBlockProps {
   value: PortableTextBlock[];
   resolveInternalLink?: ResolveInternalLink;
 }
 
-export const TextBlock: React.FC<TextBlockProps> = ({ value , resolveInternalLink }) => {
+export const TextBlock: React.FC<TextBlockProps> = ({
+  value,
+  resolveInternalLink,
+}) => {
   const components: PortableTextComponents = {
     marks: {
       icon: IconMarkComponent,
       link: LinkMarkComponent(resolveInternalLink),
     },
   };
+
   return <PortableText value={value} components={components} />;
 };
