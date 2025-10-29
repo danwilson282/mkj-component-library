@@ -109,17 +109,11 @@ export const WithInternalLink: Story = {
                 _ref: "b0c3d4bb-2390-454a-9c04-35b3e1b6e3df",
                 _type: "reference"
               },
+              internalUrl: "/about-us",
               linkType: "internal",
             }
         ]
       }
     ],
-    resolveInternalLink: (ref: string) => {
-      // Example implementation of internal link resolution
-      const linkMap: Record<string, string> = {
-        "b0c3d4bb-2390-454a-9c04-35b3e1b6e3df": "/about-us",
-      };
-      return linkMap[ref] || "/";
-    }
   }
 }
