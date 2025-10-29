@@ -1,6 +1,6 @@
 {
   "name": "@danwilson282/mkj-component-library",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
