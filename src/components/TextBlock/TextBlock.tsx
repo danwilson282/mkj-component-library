@@ -55,39 +55,45 @@ export type ResolveInternalLink =
   | ((ref: string) => Promise<string>);
 
 const LinkMarkComponent = (
-  resolveInternalLink?: ResolveInternalLink
+  resolveInternalLink?: (ref: string) => Promise<string> | string
 ): React.FC<PortableTextMarkComponentProps<SanityLink>> =>
   ({ children, value }) => {
-    const [href, setHref] = React.useState("#");
+    const [href, setHref] = React.useState('#');
 
     React.useEffect(() => {
       if (!value) return;
 
-      // External
-      if (value.linkType === "external" && value.externalUrl) {
+      // External link
+      if (value.linkType === 'external' && value.externalUrl) {
         setHref(value.externalUrl);
         return;
       }
 
-      // Internal
-      if (value.linkType === "internal" && value.internalLink?._ref) {
-        const maybePromise = resolveInternalLink?.(value.internalLink._ref);
+      // Internal link
+      if (value.linkType === 'internal' && value.internalLink?._ref) {
+        const maybeResult = resolveInternalLink?.(value.internalLink._ref);
 
-        if (maybePromise instanceof Promise) {
-          maybePromise.then((url) => setHref(url || "/"));
-        } else if (typeof maybePromise === "string") {
-          setHref(maybePromise);
+        if (maybeResult && typeof (maybeResult as any).then === 'function') {
+          // ✅ It's a Promise
+          (maybeResult as Promise<string>)
+            .then((url) => setHref(url || '/'))
+            .catch(() => setHref('/'));
+        } else if (typeof maybeResult === 'string') {
+          // ✅ Synchronous
+          setHref(maybeResult);
+        } else {
+          setHref('/');
         }
       }
     }, [value]);
 
-    const target = value?.openInNewTab ? "_blank" : "_self";
+    const target = value?.openInNewTab ? '_blank' : '_self';
 
     return (
       <a
         href={href}
         target={target}
-        rel={target === "_blank" ? "noopener noreferrer" : undefined}
+        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
       >
         {children}
       </a>
