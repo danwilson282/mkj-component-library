@@ -21,6 +21,23 @@ export const Default: Story = {
         children: [
           {
             _type: "span",
+            text: "This is a simple text block.",
+            marks: []
+          },
+        ],
+      }
+    ],
+  }
+};
+
+export const WithIcon: Story = {
+    args: {
+    value: [
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
             text: "This text has an icon ",
             marks: []
           },
@@ -28,7 +45,7 @@ export const Default: Story = {
             _type: "span",
             text: "inline",
             marks: ["iconMark1"]
-          }
+          },
         ],
         markDefs: [
           {
@@ -36,10 +53,67 @@ export const Default: Story = {
             _type: "icon",
             iconLibrary: "md",
             iconName: "MdCheck"
-          }
+          },
         ]
       }
-    ]
+    ],
   }
-};
+}
 
+export const WithExternalLink: Story = {
+    args: {
+    value: [
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "This text is an external link ",
+            marks: ["link1"]
+          },
+        ],
+        markDefs: [
+          {
+              _key: "link1",
+              _type: "link",
+              internalLink: {
+                _ref: "b0c3d4bb-2390-454a-9c04-35b3e1b6e3df",
+                _type: "reference"
+              },
+              linkType: "external",
+              externalUrl: "https://www.google.com"
+            }
+        ]
+      }
+    ],
+  }
+}
+
+export const WithInternalLink: Story = {
+  args: {
+    value: [
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "This text is an internal link ",
+            marks: ["link1"]
+          },
+        ],
+        markDefs: [
+          {
+              _key: "link1",
+              _type: "link",
+              internalLink: {
+                _ref: "b0c3d4bb-2390-454a-9c04-35b3e1b6e3df",
+                _type: "reference"
+              },
+              internalUrl: "/about-us",
+              linkType: "internal",
+            }
+        ]
+      }
+    ],
+  }
+}
