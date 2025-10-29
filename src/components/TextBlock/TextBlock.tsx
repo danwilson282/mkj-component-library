@@ -4,6 +4,9 @@ import type { PortableTextBlock, PortableTextMarkDefinition } from '@portabletex
 import * as MdIcons from "react-icons/md";
 import * as FaIcons from "react-icons/fa";
 import * as FiIcons from "react-icons/fi";
+import { link } from "@heroui/react";
+
+export type ResolveInternalLink = (ref: string) => string;
 
 interface IconAnnotation extends PortableTextMarkDefinition {
   _type: "icon";
@@ -16,6 +19,19 @@ const iconLibraries = {
   fa: FaIcons,
   fi: FiIcons,
 };
+
+interface SanityLink extends PortableTextMarkDefinition {
+  _type: 'link';
+    linkType: 'internal' | 'external';
+    internalLink?: {
+      _ref: string;
+      _type: 'reference';
+    }; // _ref to page or post
+    externalUrl?: string;
+    label?: string;
+    openInNewTab?: boolean;
+    internalUrl?: string;
+}
 
 const IconMarkComponent: React.FC<
   PortableTextMarkComponentProps<IconAnnotation>
@@ -40,9 +56,29 @@ const IconMarkComponent: React.FC<
   );
 };
 
+const LinkMarkComponent: React.FC<PortableTextMarkComponentProps<SanityLink>> = ({ children, value }) => {
+  const href = () => {
+    if (value?.linkType === 'external' && value.externalUrl) {
+      return value.externalUrl;
+    }
+    if (value?.linkType === 'internal' && value.internalUrl) {
+      return value.internalUrl;
+    }
+    return '/'
+  }
+  // const href = resolveSanityLink(value.link);
+  const target = value?.openInNewTab ? '_blank' : '_self';
+  return (
+    <a href={href()} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined}>
+      {children}
+    </a>
+  );
+};
+
 const components: PortableTextComponents = {
   marks: {
     icon: IconMarkComponent,
+    link: LinkMarkComponent,
   },
 };
 
