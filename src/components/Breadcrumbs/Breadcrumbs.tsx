@@ -13,7 +13,7 @@ export const Breadcrumbs: React.FC<BreadcrumbProps> = ({ items }) => (
   <HeroBreadcrumbs>
     {
         items.map(b=> (
-            <BreadcrumbItem href={b.href}>{b.body}</BreadcrumbItem>
+            <BreadcrumbItem className="bg-background text-foreground" href={b.href}>{b.body}</BreadcrumbItem>
         ))
     }
   </HeroBreadcrumbs>

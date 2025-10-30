@@ -3,3 +3,10 @@
 @tailwind utilities;
 
 /* Global component library styles here */
+:root {
+  --background: #1C2333 ;
+  --foreground: #F5F9FC;
+  --header: #F5F9FC;
+  --primary: #795EFF;
+  --secondary: #6cd97e;
+}
