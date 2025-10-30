@@ -50,14 +50,14 @@ export const NestedNav:React.FC<NestedNavProps> = ({menuTitle, navItems}) => {
         >
           {item.locked ? (
           <span
-            className="flex-1 text-gray-500 transition-colors"
+            className="flex-1 text-foreground transition-colors"
           >
             {item.label} <FaLock className="inline ml-2 text-gray-500" />
           </span>
           ) : (
           <a
             href={item.link || '#'}
-            className="flex-1 text-gray-800 hover:text-blue-600 transition-colors"
+            className="flex-1 text-foreground hover:text-primary transition-colors"
             onClick={(e) => !hasChildren && e.stopPropagation()}
           >
             {item.label}
@@ -65,14 +65,14 @@ export const NestedNav:React.FC<NestedNavProps> = ({menuTitle, navItems}) => {
           )}
 
           {hasChildren && !item.locked && (
-            <span className="text-gray-500">
+            <span className="text-foreground">
               {isExpanded ? <FaAngleDown size={20} /> : <FaAngleRight size={20} />}
             </span>
           )}
         </div>
         
         {hasChildren && isExpanded && (
-          <div className="bg-gray-50">
+          <div className="bg-background">
             {item.children!.map(child => renderNavItem(child, level + 1))}
           </div>
         )}
@@ -88,10 +88,10 @@ export const NestedNav:React.FC<NestedNavProps> = ({menuTitle, navItems}) => {
        color="primary"
         aria-label="Toggle menu"
        >{isOpen ? <FaRectangleXmark size={28} /> : <FaBars size={28} />}</Button>
-      <Drawer isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Drawer className="bg-background text-foreground" isOpen={isOpen} onOpenChange={onOpenChange}>
         <DrawerContent>
             <>
-              <DrawerHeader className="flex flex-col gap-1">{menuTitle}</DrawerHeader>
+              <DrawerHeader className="flex flex-col gap-1 text-header">{menuTitle}</DrawerHeader>
               <DrawerBody>
                 <nav
                   

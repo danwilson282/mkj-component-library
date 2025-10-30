@@ -95,6 +95,7 @@ export const LoginButton:React.FC<LoginButtonProps> = ({user, useCredentials, us
         isKeyboardDismissDisabled={true}
         isOpen={isOpen}
         onOpenChange={onOpenChange}
+        className="bg-background text-foreground"
       >
         <ModalContent>
             <>
