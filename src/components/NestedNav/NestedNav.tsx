@@ -12,6 +12,7 @@ export type NestedNavProps = {
     menuTitle: string;
     navItems: NavItem[]
 }
+import { Link } from '@heroui/react';
 
 type NavItem = {
   id: string;
@@ -55,13 +56,13 @@ export const NestedNav:React.FC<NestedNavProps> = ({menuTitle, navItems}) => {
             {item.label} <FaLock className="inline ml-2 text-gray-500" />
           </span>
           ) : (
-          <a
-            href={item.link === '/' ? '/' : item.link || '#'}
-            className="flex-1 text-foreground hover:text-primary transition-colors"
-            onClick={(e) => !hasChildren && e.stopPropagation()}
-          >
-            {item.label}
-          </a>
+            <Link
+              href={item.link ? item.link : '#'}
+              className="flex-1 text-foreground hover:text-primary transition-colors"
+              onClick={(e) => !hasChildren && e.stopPropagation()}
+            >
+              {item.label}
+            </Link>
           )}
 
           {hasChildren && !item.locked && (
