@@ -15,3 +15,6 @@ export type { TextBlockProps } from  "./components/TextBlock/TextBlock"
 
 export { LoginButton } from "./components/LoginButton/LoginButton"
 export type { LoginButtonProps } from  "./components/LoginButton/LoginButton"
+
+export { Icon } from "./components/Icon/Icon"
+export type { IconProps } from  "./components/Icon/Icon"

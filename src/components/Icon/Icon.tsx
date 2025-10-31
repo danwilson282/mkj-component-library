@@ -8,7 +8,7 @@ export type IconProps = {
     size: number;
 }
 
-const Icon: React.FC<IconProps> = ({ icon, color, size }) => {
+export const Icon: React.FC<IconProps> = ({ icon, color, size }) => {
 
   // Dynamically get the icon component
   const IconComp = FaIcons[icon];
@@ -20,5 +20,3 @@ const Icon: React.FC<IconProps> = ({ icon, color, size }) => {
     </div>
   );
 };
-
-export default Icon;
