@@ -56,7 +56,7 @@ export const NestedNav:React.FC<NestedNavProps> = ({menuTitle, navItems}) => {
           </span>
           ) : (
           <a
-            href={item.link || '#'}
+            href={item.link === '/' ? '/' : item.link || '#'}
             className="flex-1 text-foreground hover:text-primary transition-colors"
             onClick={(e) => !hasChildren && e.stopPropagation()}
           >

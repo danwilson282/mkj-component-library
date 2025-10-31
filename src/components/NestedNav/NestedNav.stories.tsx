@@ -17,7 +17,7 @@ export const Default: Story = {
   args: {
     menuTitle: "Menu",
     navItems: [
-    { id: "1", label: 'Home', link: '#home' },
+    { id: "1", label: 'Home', link: '/' },
     {
       id: "2",
       label: 'Products',
